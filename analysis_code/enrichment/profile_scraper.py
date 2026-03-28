@@ -155,11 +155,17 @@ def enrich_profiles(contributors: list) -> list:
         url = contributor.get("linkedin_url", "")
 
         if not url.startswith("http"):
+            # If no URL was found, we can still fall back to GitHub classification
+            fallback_employer = "Unknown"
+            if contributor.get("internal_or_external") == "internal":
+                repo = contributor.get("repo", "")
+                fallback_employer = "OpenAI" if "openai" in repo else "Google"
+                
             contributor.update({
                 "current_company":               "",
                 "current_title":                 "",
-                "employer_inferred":             "Unknown",
-                "employer_confidence":           "unknown",
+                "employer_inferred":             fallback_employer,
+                "employer_confidence":           "low",
                 "tenure_current_employer_years": 0,
                 "tenure_confidence":             "unknown",
             })

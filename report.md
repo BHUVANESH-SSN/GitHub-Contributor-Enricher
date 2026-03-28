@@ -4,6 +4,15 @@
 
 > **Note on limits:** For each repository, the top 20 contributors were selected based on total commits. This number was chosen because it cleanly captures the core engineers responsible for over 90% of the repository's activity while keeping API rate limits and scraping costs manageable.
 
+### 5 out of Top 40 contributors were BOTS and GHOTS
+
+- **dependabot[bot] (from OpenAI Codex)**
+- **gemini-cli-robot (from Google Gemini)**
+
+- **jif-oai (from OpenAI Codex)**
+- **iceweasel-oai (from OpenAI Codex)**
+- **viyatb-oai (from OpenAI Codex)**
+
 ### openai/codex
 - **Total top contributors analyzed:** 16
 - **Internal contributors:** 12 (75.0%)

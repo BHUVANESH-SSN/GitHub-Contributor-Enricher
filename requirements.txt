@@ -1,0 +1,6 @@
+python-dotenv
+rich
+PyGithub
+tqdm
+apify-client
+pandas

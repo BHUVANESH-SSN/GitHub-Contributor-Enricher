@@ -1,0 +1,322 @@
+{
+  "created": 1153907269000,
+  "trackingId": "ZfEvqIF+RuSX+MkvEAtHNg==",
+  "firstName": "Michael",
+  "lastName": "Bolin",
+  "pronoun": null,
+  "versionTag": "2347221123",
+  "headline": "Member of Technical Staff at OpenAI (Codex)",
+  "publicIdentifier": "michael-bolin-7632712",
+  "creator": false,
+  "influencer": false,
+  "premium": false,
+  "connectionType": "OUT_OF_NETWORK",
+  "birthDate": null,
+  "id": "6617595",
+  "profileId": "ACoAAABk-fsBSgyNxADL0FX0ci-L1asJCykYHOw",
+  "pictureUrl": "https://media.licdn.com/dms/image/v2/D5603AQEiFWhOjg-tkg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1684536818721?e=1776297600&v=beta&t=UtWEr4VOfblYiS5SheQOFQO7dEJl5bXtYpt7B24YCuw",
+  "countryCode": "US",
+  "geoUrn": "urn:li:fsd_geo:103644278",
+  "geoLocationName": "United States",
+  "jobTitle": "Member of Technical Staff",
+  "summary": "Recruiters: I am not interested in opportunities unless you represent Tim Schafer or Ron Gilbert. Here is my body of work: https://foxchickengrain.com/\n\n# OpenAI\n\n* Tech lead for Codex CLI https://github.com/openai/codex\n\n# Facebook\n\n* 2024 DotSlash https://engineering.fb.com/2024/02/06/developer-tools/dotslash-simplified-executable-deployment/\n* 2023 CodeCompose, GenAI-assisted code authoring https://www.youtube.com/watch?v=ANDJ0TKjyWw\n* 2022 Open sourced Sapling, source control client https://engineering.fb.com/2022/11/15/open-source/sapling-source-control-scalable/\n* 2022 Launched ReviewStack, GitHub pull request UI that supports stacked changes https://reviewstack.dev/\n* 2020-2021 Internal web-based tools for code browsing, search, and project management\n* 2019 Miscellaneous work to promote Rust internally at Facebook\n* 2016-2018 Founding member of EdenFS team, the virtual filesystem component of Sapling https://github.com/facebook/sapling\n* 2014-2015 Created Nuclide (https://engineering.fb.com/2015/06/23/developer-tools/building-nuclide-a-unified-developer-experience), a set of packages that provide IDE-like functionality for Atom (https://atom.io/). This work was later ported to VS Code.\n* 2012-2013 Created Buck (https://github.com/facebook/buck), an open source build tool. Its use at Meta has recently been superseded by Buck2: https://engineering.fb.com/2023/04/06/open-source/buck2-open-source-large-scale-build-system/\n\n# Independent\n\n* Wrote Closure: The Definitive Guide (O'Reilly, 2010).\n* Created plovr (plovr.com), a Closure build tool.\n\n# Google\n\n* Worked on the frontend of Google Calendar (https://calendar.google.com/calendar/) and Google Tasks (https://mail.google.com/tasks/desktop).\n* Built the Closure Compiler Application Service (http://closure-compiler.appspot.com/home).\n* Helped open source the Closure Tools (https://developers.google.com/closure/).\n\n# MIT\n\n* MEng Thesis: End-User Programming for the Web (http://bolinfest.com/Michael_Bolin_Thesis_Chickenfoot.pdf).\n* Created Chickenfoot (http://up.csail.mit.edu/chickenfoot/), a Firefox extension that enables end-users to customize web pages and automate tasks on the Web. Won two best paper awards.",
+  "positions": [
+    {
+      "title": "Member of Technical Staff",
+      "locationName": "",
+      "timePeriod": {
+        "startDate": {
+          "month": 2,
+          "year": 2024
+        },
+        "endDate": null
+      },
+      "totalDuration": "2 yrs 2 mos",
+      "description": "",
+      "company": {
+        "url": "https://www.linkedin.com/company/11130470/",
+        "name": "OpenAI",
+        "logo": "https://media.licdn.com/dms/image/v2/D560BAQHpzXbqSyR74A/company-logo_100_100/B56ZT8EYB8HsAQ-/0/1739395793272/openai_logo?e=1776297600&v=beta&t=HAu5IqKJ1ZEly4p0CUnOSpq5k_VBk-kDCbwfVMIgyGg"
+      }
+    },
+    {
+      "title": "Software Engineer",
+      "locationName": "Menlo Park, CA",
+      "timePeriod": {
+        "startDate": {
+          "month": 5,
+          "year": 2012
+        },
+        "endDate": {
+          "month": 2,
+          "year": 2024
+        }
+      },
+      "totalDuration": "11 yrs 10 mos",
+      "description": "",
+      "company": {
+        "url": "https://www.linkedin.com/company/76987811/",
+        "name": "Facebook",
+        "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQHi-wrXiQcbxw/company-logo_400_400/company-logo_400_400/0/1635988509331/facebook__logo?e=1776297600&v=beta&t=5pqyzaVQLiFMhQP3ispbrU2NCXu9n2PRXbZm_7L33to"
+      }
+    },
+    {
+      "title": "Contractor",
+      "locationName": "New York, NY",
+      "timePeriod": {
+        "startDate": {
+          "month": 8,
+          "year": 2011
+        },
+        "endDate": {
+          "month": 12,
+          "year": 2011
+        }
+      },
+      "totalDuration": "5 mos",
+      "description": "Open-sourced Closure Templates (http://code.google.com/p/closure-templates/) and the S2 Geometry Library for Java (http://code.google.com/p/s2-geometry-library-java/).",
+      "company": {
+        "url": "",
+        "name": "Google"
+      }
+    },
+    {
+      "title": "Author",
+      "locationName": "",
+      "timePeriod": {
+        "startDate": {
+          "month": 11,
+          "year": 2009
+        },
+        "endDate": {
+          "month": 9,
+          "year": 2010
+        }
+      },
+      "totalDuration": "11 mos",
+      "description": "Author of Closure: The Definitive Guide",
+      "company": {
+        "url": "https://www.linkedin.com/company/8459/",
+        "name": "O'Reilly Media",
+        "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQF5MuZJw_rPSQ/company-logo_200_200/B4EZfGrGySGwAI-/0/1751384878542/oreilly_logo?e=1776297600&v=beta&t=k-akgPr-qf0qiKgPptpbu4Ve3yBK6LoumumTQCvbDgA"
+      }
+    },
+    {
+      "title": "Senior Software Engineer",
+      "locationName": "",
+      "timePeriod": {
+        "startDate": {
+          "month": 8,
+          "year": 2005
+        },
+        "endDate": {
+          "month": 10,
+          "year": 2009
+        }
+      },
+      "totalDuration": "4 yrs 3 mos",
+      "description": "Google Calendar\nGoogle Tasks\nClosure Compiler",
+      "company": {
+        "url": "https://www.linkedin.com/company/1441/",
+        "name": "Google",
+        "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQGv3cqOuUMY7g/company-logo_200_200/B4EZmhegXHGcAM-/0/1759350753990/google_logo?e=1776297600&v=beta&t=aQ3oNI_3y-A5OuQtWAGytw9VGR1Nz2gz03Gmjs1b_Tw"
+      }
+    }
+  ],
+  "educations": [
+    {
+      "schoolLogo": "https://media.licdn.com/dms/image/v2/D560BAQH-UXRfIDIKug/company-logo_400_400/company-logo_400_400/0/1689799729035/mit_logo?e=1776297600&v=beta&t=9Yr7nd_A4P2SXkXnVLkejfOtt7zm6L7GVQ2aR1KBzDI",
+      "schoolUrl": "https://www.linkedin.com/company/1503/",
+      "schoolName": "Massachusetts Institute of Technology",
+      "degreeName": "Bachelor's degree",
+      "fieldOfStudy": "Computer Science (BS, MEng), Math (BS)",
+      "timePeriod": {
+        "startDate": {
+          "year": 1999
+        },
+        "endDate": {
+          "year": 2005
+        }
+      }
+    }
+  ],
+  "certifications": [],
+  "courses": [],
+  "honors": [],
+  "languages": [],
+  "volunteerExperiences": [],
+  "projects": [
+    {
+      "title": "Nuclide",
+      "description": "Nuclide is a collection of packages for Atom to provide IDE-like functionality for a variety of programming languages and technologies.",
+      "dateRange": {},
+      "associatedWith": "Jun 2015 - Present"
+    }
+  ],
+  "publications": [],
+  "patents": [
+    {
+      "title": "System and method for enhancing keyword relevance by user's interest on the search result documents",
+      "issuer": "US 7,970,753 \u00b7 Issued Jun 28, 2011",
+      "issueDate": {},
+      "description": "A system and method are provided for enabling a user to search for documents that the user has previously viewed on its local machine. The system includes three main components: the desktop integration module, the index module, and the graphical user interface module. The desktop integration module is an application which monitors documents with which the user interacts for predetermined events, and obtains content data and metadata from the monitored documents. The index module indexes the content data and metadata received from the desktop integration module. The graphical user interface module then permits a user to utilize the desktop integration module and index module by allowing a user to search for a document.\n\nAn IBM Research Article on this patent http://tinyurl.com/patent-7634461"
+    },
+    {
+      "title": "Method for automatically searching for documents related to calendar and email entries",
+      "issuer": "US 7,831,601 \u00b7 Issued Nov 9, 2010",
+      "issueDate": {},
+      "description": "A method is provided for enabling a user to search for documents that the user has previously viewed on its local machine. The method may rely upon three main system components: the desktop integration module, the index module, and the graphical user interface module. The desktop integration module is an application which monitors documents with which the user interacts for predetermined events, and obtains content data and metadata from the monitored documents. The index module indexes the content data and metadata received from the desktop integration module. The graphical user interface module then permits a user to utilize the desktop integration module and index module by allowing a user to search for a document."
+    }
+  ],
+  "testScores": [],
+  "organizations": [],
+  "volunteerCauses": [],
+  "companyName": "OpenAI",
+  "companyPublicId": "openai",
+  "companyLinkedinUrl": "https://www.linkedin.com/company/openai/",
+  "currentCompany": {
+    "entityUrn": "urn:li:fsd_company:11130470",
+    "name": "OpenAI",
+    "logoResolutionResult": {
+      "url": null,
+      "vectorImage": {
+        "digitalmediaAsset": "urn:li:digitalmediaAsset:D560BAQHpzXbqSyR74A",
+        "attribution": null,
+        "c2paManifestData": null,
+        "artifacts": [
+          {
+            "width": 400,
+            "fileIdentifyingUrlPathSegment": "400_400/B56ZT8EYB8HsAY-/0/1739395793272/openai_logo?e=1776297600&v=beta&t=oqMh0YftRakeGQ-3vMTSHQHaivzappUepxRTVLAcS9E",
+            "expiresAt": 1776297600000,
+            "height": 400
+          },
+          {
+            "width": 200,
+            "fileIdentifyingUrlPathSegment": "200_200/B56ZT8EYB8HsAI-/0/1739395793272/openai_logo?e=1776297600&v=beta&t=EGCrkHzxP5MPYQBCEmevXLNemCYAX-RZGhpUu7tdPH4",
+            "expiresAt": 1776297600000,
+            "height": 200
+          },
+          {
+            "width": 100,
+            "fileIdentifyingUrlPathSegment": "100_100/B56ZT8EYB8HsAQ-/0/1739395793272/openai_logo?e=1776297600&v=beta&t=HAu5IqKJ1ZEly4p0CUnOSpq5k_VBk-kDCbwfVMIgyGg",
+            "expiresAt": 1776297600000,
+            "height": 100
+          }
+        ],
+        "rootUrl": "https://media.licdn.com/dms/image/v2/D560BAQHpzXbqSyR74A/company-logo_"
+      }
+    },
+    "universalName": "openai",
+    "url": "https://www.linkedin.com/company/openai/"
+  },
+  "followerCount": 3016,
+  "mutualConnections": [],
+  "isVerified": true,
+  "verificationBadge": "SYS_ICN_VERIFIED_MEDIUM",
+  "availablePremiumFeatures": [],
+  "pronunciationUrl": "",
+  "connectionsCount": 809,
+  "skills": [
+    {
+      "name": "Java",
+      "endorsements": 6,
+      "experiences": ""
+    },
+    {
+      "name": "Google Closure",
+      "endorsements": 3,
+      "experiences": ""
+    },
+    {
+      "name": "JavaScript",
+      "endorsements": 11,
+      "experiences": ""
+    },
+    {
+      "name": "Web Development",
+      "endorsements": 4,
+      "experiences": ""
+    },
+    {
+      "name": "Software Engineering",
+      "endorsements": 7,
+      "experiences": ""
+    },
+    {
+      "name": "Computer Science",
+      "endorsements": 0,
+      "experiences": ""
+    },
+    {
+      "name": "Software Development",
+      "endorsements": 3,
+      "experiences": ""
+    },
+    {
+      "name": "CSS",
+      "endorsements": 0,
+      "experiences": ""
+    },
+    {
+      "name": "Front-end",
+      "endorsements": 2,
+      "experiences": ""
+    },
+    {
+      "name": "HTML",
+      "endorsements": 0,
+      "experiences": ""
+    },
+    {
+      "name": "Google Closure",
+      "endorsements": 3,
+      "experiences": ""
+    },
+    {
+      "name": "Web Development",
+      "endorsements": 4,
+      "experiences": ""
+    },
+    {
+      "name": "Software Engineering",
+      "endorsements": 7,
+      "experiences": ""
+    },
+    {
+      "name": "Computer Science",
+      "endorsements": 0,
+      "experiences": ""
+    },
+    {
+      "name": "Software Development",
+      "endorsements": 3,
+      "experiences": ""
+    },
+    {
+      "name": "Front-end",
+      "endorsements": 2,
+      "experiences": ""
+    },
+    {
+      "name": "Java",
+      "endorsements": 6,
+      "experiences": ""
+    },
+    {
+      "name": "JavaScript",
+      "endorsements": 11,
+      "experiences": ""
+    },
+    {
+      "name": "CSS",
+      "endorsements": 0,
+      "experiences": ""
+    },
+    {
+      "name": "HTML",
+      "endorsements": 0,
+      "experiences": ""
+    }
+  ],
+  "inputUrl": "https://www.linkedin.com/in/michael-bolin-7632712"
+}

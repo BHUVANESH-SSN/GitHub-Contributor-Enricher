@@ -44,7 +44,6 @@ The pipeline is fully automated and uses multiple APIs/tools:
    - computes tenure in years
 
 Current implementation note:
-- The assignment mentions Bright Data as a possible web scraping tool. The checked-in implementation uses GitHub API + Apify + Scrapin.io instead.
 - No Anthropic API key is required by the current codebase.
 
 ## Internal vs External Logic
@@ -74,7 +73,7 @@ Why 20:
 - `analysis_code/`: main pipeline source code
 - `dataset.csv`: final enriched dataset
 - `report.md`: submission report
-- `cache/`: cached intermediate API results and helper scripts
+- `cache/`: cached API results and generated JSON artifacts
 - `backups/`: backup helper scripts
 
 ## Output Dataset
@@ -115,7 +114,6 @@ Optional/configurable:
 
 Not required by the current code:
 - `ANTHROPIC_API_KEY`
-- Bright Data credentials
 
 ## How to Run
 

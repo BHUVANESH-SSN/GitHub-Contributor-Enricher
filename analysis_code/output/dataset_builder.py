@@ -28,18 +28,17 @@ def build_dataset(all_contributors: List[Dict]) -> pd.DataFrame:
     df = df[columns].copy()
 
     df["linkedin_url"] = df["linkedin_url"].fillna("")
+    df["employer_inferred"] = df["employer_inferred"].replace("", "Unknown").fillna("Unknown")
+    df["employer_confidence"] = df["employer_confidence"].replace("", "unknown").fillna("unknown")
 
     pd.set_option("future.no_silent_downcasting", True)
     df["tenure_current_employer_years"] = df["tenure_current_employer_years"].fillna(0).infer_objects(copy=False)
 
     df = df.fillna("")
 
-    df = df[~df["github_login"].astype(str).str.lower().str.contains("bot")].copy()
+    df = df[~df["github_login"].astype(str).str.lower().str.contains("bot|robot", regex=True)].copy()
 
     df.loc[df["name"].astype(str).str.strip() == "", "name"] = df["github_login"]
-
-    cond_drop = (df["employer_inferred"] == "Unknown") & (df["linkedin_url"].astype(str).str.strip() == "")
-    df = df[~cond_drop]
 
     output_path = "dataset.csv"
     logger.info(f"Saving dataset to {output_path}")

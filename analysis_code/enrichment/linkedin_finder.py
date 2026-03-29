@@ -17,10 +17,13 @@ from analysis_code.utils.logger import logger
 CACHE_DIR = Path("cache")
 CACHE_DIR.mkdir(exist_ok=True, parents=True)
 
-apify_client = ApifyClient(APIFY_API_TOKEN)
+apify_client = ApifyClient(APIFY_API_TOKEN) if APIFY_API_TOKEN else None
 
 
 def find_linkedin_url(name: str, github_login: str, company: str = "") -> Optional[str]:
+    if apify_client is None:
+        return None
+
     search_term = name if name else github_login
     company_term = company if company else ""
     search_query = f"{search_term} {company_term} site:linkedin.com/in"
@@ -47,7 +50,18 @@ def find_linkedin_urls_bulk(contributors: List[Dict]) -> List[Dict]:
     if cache_file.exists():
         logger.info("Loading LinkedIn URLs from cache")
         with open(cache_file, "r", encoding="utf-8") as f:
-            return json.load(f)
+            cached_rows = json.load(f)
+
+        cache_map = {
+            (row.get("repo"), row.get("github_login")): row.get("linkedin_url", "")
+            for row in cached_rows
+        }
+        for contributor in contributors:
+            contributor["linkedin_url"] = cache_map.get(
+                (contributor.get("repo"), contributor.get("github_login")),
+                contributor.get("linkedin_url", ""),
+            )
+        return contributors
 
     logger.info("Finding LinkedIn URLs in bulk using Apify")
 
@@ -61,7 +75,8 @@ def find_linkedin_urls_bulk(contributors: List[Dict]) -> List[Dict]:
 
         url = find_linkedin_url(name, login, company)
         contributor["linkedin_url"] = url or ""
-        time.sleep(2)
+        if apify_client is not None:
+            time.sleep(2)
 
     with open(cache_file, "w", encoding="utf-8") as f:
         json.dump(contributors, f, indent=4)

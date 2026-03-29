@@ -112,7 +112,22 @@ def classify_all(contributors: List[Dict], repo_name: str) -> List[Dict]:
     if cache_file.exists():
         logger.info(f"Loading classified users for {repo_name} from cache")
         with open(cache_file, "r", encoding="utf-8") as f:
-            return json.load(f)
+            cached_results = json.load(f)
+
+        if isinstance(cached_results, list):
+            cached_map = {item.get("github_login"): item for item in cached_results}
+            merged_results = []
+            for contributor in contributors:
+                merged = contributor.copy()
+                cached = cached_map.get(contributor.get("github_login"))
+                if cached:
+                    for key in ("internal_or_external", "classification_confidence", "is_bot"):
+                        if key in cached:
+                            merged[key] = cached[key]
+                else:
+                    merged = classify_contributor(merged, repo_name)
+                merged_results.append(merged)
+            return merged_results
 
     logger.info(f"Classifying {len(contributors)} contributors...")
     results = []

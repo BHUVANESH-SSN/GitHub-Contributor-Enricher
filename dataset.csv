@@ -1,36 +1,39 @@
 repo,github_login,github_id,name,contribution_metric,internal_or_external,classification_confidence,employer_inferred,employer_confidence,linkedin_url,tenure_current_employer_years,tenure_confidence
-openai/codex,bolinfest,655869,Michael Bolin,702,internal,low,OpenAI,high,https://www.linkedin.com/in/michael-bolin-7632712,2.1,high
-openai/codex,aibrahim-oai,219906144,Ahmed Ibrahim,457,internal,medium,OpenAI,high,https://www.linkedin.com/in/ahmedibrhm,0.7,high
-openai/codex,pakrym-oai,204937752,pakrym-oai,356,internal,low,OpenAI,high,https://www.linkedin.com/in/pakrym,1.0,high
-openai/codex,nornagon-openai,172423086,Jeremy Rose,199,external,low,Jeremy Rose LLC,high,https://www.linkedin.com/in/jeremyerose,0.7,high
-openai/codex,etraut-openai,223546144,Eric Traut,184,internal,low,OpenAI,high,https://www.linkedin.com/in/eric-traut-79a815137,0.7,high
-openai/codex,dylan-hurd-oai,220976066,Dylan Hurd,180,internal,medium,OpenAI,high,https://www.linkedin.com/in/dylanhurd,0.7,high
-openai/codex,owenlin0,947871,Owen Lin,110,internal,low,OpenAI,high,https://www.linkedin.com/in/owenlin,2.7,high
-openai/codex,charley-oai,253381928,Charley Cunningham,103,internal,low,OpenAI,high,https://www.linkedin.com/in/charley-cunningham-049a81193,0.2,high
-openai/codex,gpeal,1307745,Gabriel Peal,84,internal,medium,OpenAI,high,https://www.linkedin.com/in/gpeal,2.3,high
-openai/codex,tibo-openai,177053821,Thibault Sottiaux,81,internal,low,OpenAI,high,https://www.linkedin.com/in/thibault-sottiaux-27195366,1.7,high
-openai/codex,joshka-oai,236681816,Josh McKinney,79,internal,medium,Amazon,high,https://www.linkedin.com/in/joshka,8.9,high
-openai/codex,celia-oai,209693228,Celia Chen,66,external,low,Applied Intuition,high,https://www.linkedin.com/in/celiaxinuochen,3.8,high
-openai/codex,mzeng-openai,175741029,Matthew Zeng,66,external,low,Integrus Partners,high,https://www.linkedin.com/in/matthew-zeng-9b309623a,0.5,high
-openai/codex,xl-openai,184293535,xl-openai,66,internal,low,OpenAI,high,https://www.linkedin.com/in/blake-barr-25a0635a,0.2,high
-openai/codex,sayan-oai,244841968,sayan-oai,65,external,low,Foundation for Armenian Science and Technology (FAST),high,https://am.linkedin.com/in/a-sayan,2.3,high
-openai/codex,fouad-openai,169186268,Fouad Matin,61,internal,medium,OpenAI,high,https://www.linkedin.com/in/fouadmatin,1.8,high
-google-gemini/gemini-cli,scidomino,13950003,Tommaso Sciortino,363,internal,medium,Google,high,https://www.linkedin.com/in/tommasosciortino,14.0,high
-google-gemini/gemini-cli,NTaylorMullen,2008729,N. Taylor Mullen,330,internal,medium,Google,high,https://www.linkedin.com/in/ntaylormullen,0.3,high
-google-gemini/gemini-cli,abhipatel12,43648792,Abhi,255,internal,medium,Google,high,https://www.linkedin.com/in/abhiyadav,2.2,high
-google-gemini/gemini-cli,jacob314,1226812,Jacob Richman,253,internal,medium,Google,high,https://www.linkedin.com/in/jacob-richman-5634565,0.8,high
-google-gemini/gemini-cli,SandyTao520,12478482,Sandy Tao,199,internal,medium,Google,high,https://www.linkedin.com/in/sandytao520,3.8,high
-google-gemini/gemini-cli,mattKorwel,1538695,matt korwel,170,internal,high,Google,high,https://www.linkedin.com/in/mattkorwel,1.2,high
-google-gemini/gemini-cli,olcan,747196,Olcan,170,external,low,Scaled Inference,high,https://www.linkedin.com/in/olcans,11.7,high
-google-gemini/gemini-cli,jerop,18076400,Jerop Kipruto,163,internal,medium,Google,high,https://www.linkedin.com/in/jerop,0.4,high
-google-gemini/gemini-cli,chrstnb,22881644,christine betts,156,internal,medium,Google,high,https://www.linkedin.com/in/christine-betts,1.8,high
-google-gemini/gemini-cli,skeshive,22923227,Shreya Keshive,150,internal,high,Google,high,https://www.linkedin.com/in/shreyakeshive,1.6,high
-google-gemini/gemini-cli,sehoon38,2738568,Sehoon Shon,117,internal,low,Google,high,https://www.linkedin.com/in/sehoon,0.4,high
-google-gemini/gemini-cli,allenhutchison,3849061,Allen Hutchison,116,internal,medium,Google,high,https://www.linkedin.com/in/allenhutchison,0.6,high
-google-gemini/gemini-cli,galz10,38544478,Gal Zahavi,116,internal,medium,Google,high,https://www.linkedin.com/in/gal-zahavi,0.7,high
-google-gemini/gemini-cli,adamfweidman,65992621,Adam Weidman,110,internal,medium,Google,high,https://www.linkedin.com/in/adamfweidman,1.8,high
-google-gemini/gemini-cli,KeijiBranshi,10525281,Brandon Keiji,103,internal,low,Google,high,https://www.linkedin.com/in/bkhorton,3.8,high
+openai/codex,bolinfest,655869,Michael Bolin,702,internal,high,OpenAI,high,https://www.linkedin.com/in/michael-bolin-7632712,2.2,high
+openai/codex,jif-oai,230027070,jif-oai,656,internal,medium,OpenAI,low,,0.0,unknown
+openai/codex,aibrahim-oai,219906144,Ahmed Ibrahim,457,internal,high,OpenAI,high,https://www.linkedin.com/in/ahmedibrhm,0.7,high
+openai/codex,pakrym-oai,204937752,pakrym-oai,356,internal,high,OpenAI,high,https://www.linkedin.com/in/pakrym,1.1,high
+openai/codex,nornagon-openai,172423086,Jeremy Rose,199,external,high,Unknown,low,https://www.linkedin.com/in/jeremyerose,0.7,high
+openai/codex,etraut-openai,223546144,Eric Traut,184,internal,high,OpenAI,high,https://www.linkedin.com/in/eric-traut-79a815137,0.7,high
+openai/codex,dylan-hurd-oai,220976066,Dylan Hurd,180,internal,high,OpenAI,high,https://www.linkedin.com/in/dylanhurd,0.7,high
+openai/codex,owenlin0,947871,Owen Lin,110,internal,high,OpenAI,high,https://www.linkedin.com/in/owenlin,2.7,high
+openai/codex,charley-oai,253381928,Charley Cunningham,103,internal,high,OpenAI,high,https://www.linkedin.com/in/charley-cunningham-049a81193,0.2,high
+openai/codex,iceweasel-oai,234057055,iceweasel-oai,87,internal,medium,OpenAI,low,,0.0,unknown
+openai/codex,gpeal,1307745,Gabriel Peal,84,internal,high,OpenAI,high,https://www.linkedin.com/in/gpeal,2.4,high
+openai/codex,tibo-openai,177053821,Thibault Sottiaux,81,internal,high,OpenAI,high,https://www.linkedin.com/in/thibault-sottiaux-27195366,1.7,high
+openai/codex,joshka-oai,236681816,Josh McKinney,79,external,high,Unknown,low,https://www.linkedin.com/in/joshka,0.5,high
+openai/codex,viyatb-oai,234056686,viyatb-oai,76,internal,medium,OpenAI,low,,0.0,unknown
+openai/codex,celia-oai,209693228,Celia Chen,66,external,high,Unknown,low,https://www.linkedin.com/in/celiaxinuochen,1.0,high
+openai/codex,mzeng-openai,175741029,Matthew Zeng,66,external,high,Unknown,low,https://www.linkedin.com/in/matthew-zeng-9b309623a,0.6,high
+openai/codex,xl-openai,184293535,xl-openai,66,internal,high,OpenAI,high,https://www.linkedin.com/in/blake-barr-25a0635a,0.3,high
+openai/codex,sayan-oai,244841968,sayan-oai,65,external,high,Unknown,low,https://am.linkedin.com/in/a-sayan,2.4,high
+openai/codex,fouad-openai,169186268,Fouad Matin,61,internal,high,OpenAI,high,https://www.linkedin.com/in/fouadmatin,1.9,high
+google-gemini/gemini-cli,scidomino,13950003,Tommaso Sciortino,363,internal,high,Google,high,https://www.linkedin.com/in/tommasosciortino,14.1,high
+google-gemini/gemini-cli,NTaylorMullen,2008729,N. Taylor Mullen,330,internal,high,Google,high,https://www.linkedin.com/in/ntaylormullen,0.4,high
+google-gemini/gemini-cli,abhipatel12,43648792,Abhi,255,internal,high,Google,high,https://www.linkedin.com/in/abhiyadav,2.2,high
+google-gemini/gemini-cli,jacob314,1226812,Jacob Richman,253,internal,high,Google,high,https://www.linkedin.com/in/jacob-richman-5634565,0.9,high
+google-gemini/gemini-cli,SandyTao520,12478482,Sandy Tao,199,internal,high,Google,high,https://www.linkedin.com/in/sandytao520,3.8,high
+google-gemini/gemini-cli,mattKorwel,1538695,matt korwel,170,internal,high,Google,high,https://www.linkedin.com/in/mattkorwel,1.3,high
+google-gemini/gemini-cli,olcan,747196,Olcan,170,external,high,Unknown,low,https://www.linkedin.com/in/olcans,11.7,high
+google-gemini/gemini-cli,jerop,18076400,Jerop Kipruto,163,internal,high,Google,high,https://www.linkedin.com/in/jerop,0.5,high
+google-gemini/gemini-cli,chrstnb,22881644,christine betts,156,internal,high,Google,high,https://www.linkedin.com/in/christine-betts,1.8,high
+google-gemini/gemini-cli,skeshive,22923227,Shreya Keshive,150,internal,high,Google,high,https://www.linkedin.com/in/shreyakeshive,1.7,high
+google-gemini/gemini-cli,sehoon38,2738568,Sehoon Shon,117,internal,high,Google,high,https://www.linkedin.com/in/sehoon,0.5,high
+google-gemini/gemini-cli,allenhutchison,3849061,Allen Hutchison,116,internal,high,Google,high,https://www.linkedin.com/in/allenhutchison,0.7,high
+google-gemini/gemini-cli,galz10,38544478,Gal Zahavi,116,internal,high,Google,high,https://www.linkedin.com/in/gal-zahavi,0.7,high
+google-gemini/gemini-cli,adamfweidman,65992621,Adam Weidman,110,internal,high,Google,high,https://www.linkedin.com/in/adamfweidman,1.9,high
+google-gemini/gemini-cli,KeijiBranshi,10525281,Brandon Keiji,103,internal,high,Google,high,https://www.linkedin.com/in/bkhorton,3.8,high
 google-gemini/gemini-cli,bdmorgan,5309386,Bryan Morgan,86,internal,high,Google,high,https://www.linkedin.com/in/bryanmorgan,7.8,high
-google-gemini/gemini-cli,joshualitt,5853633,joshualitt,83,external,low,Unknown,high,https://www.linkedin.com/in/jlitt,0.0,unknown
-google-gemini/gemini-cli,gundermanc,5387680,Christian Gunderman,82,internal,medium,Google,high,https://www.linkedin.com/in/christian-gunderman-859b6a9a,0.2,high
-google-gemini/gemini-cli,Adib234,30782825,Adib234,81,external,low,Unknown,low,https://br.linkedin.com/in/arivlfilho,0.0,unknown
+google-gemini/gemini-cli,joshualitt,5853633,joshualitt,83,external,low,Unknown,low,https://www.linkedin.com/in/jlitt,0.0,unknown
+google-gemini/gemini-cli,gundermanc,5387680,Christian Gunderman,82,internal,high,Google,high,https://www.linkedin.com/in/christian-gunderman-859b6a9a,0.3,high
+google-gemini/gemini-cli,Adib234,30782825,Adib234,81,external,low,Unknown,low,,0.0,unknown

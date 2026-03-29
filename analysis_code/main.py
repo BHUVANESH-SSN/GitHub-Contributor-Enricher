@@ -16,6 +16,7 @@ from analysis_code.github_data.classifier import classify_all
 from analysis_code.enrichment.linkedin_finder import find_linkedin_urls_bulk
 from analysis_code.enrichment.profile_scraper import enrich_profiles
 from analysis_code.output.dataset_builder import build_dataset
+from analysis_code.output.internal_external_summary_builder import build_internal_external_summary
 from analysis_code.output.report_builder import build_report
 
 
@@ -61,6 +62,7 @@ def main() -> None:
         df = build_dataset(enriched)
         
         build_report(df)
+        build_internal_external_summary()
         
         logger.section("Final Summary")
         
@@ -71,7 +73,7 @@ def main() -> None:
         logger.info(f"Total top contributors processed: {total_processed}")
         logger.info(f"Total with LinkedIn URLs found: {urls_found}")
         logger.info(f"Total with employer identified: {employers_found}")
-        logger.success("Pipeline completed successfully! Saved dataset.csv and report.md")
+        logger.success("Pipeline completed successfully! Saved dataset.csv, report.md, and internal_vs_external_commits_pr.md")
         
     except Exception as e:
         logger.fail(f"Pipeline failed with error: {e}")

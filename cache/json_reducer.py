@@ -1,16 +1,16 @@
+"""
+Purpose: Reduce raw reverse-connect LinkedIn payloads into a smaller JSON summary.
+Input: Reads `reverse_connect.json` from the current working directory.
+Output: Writes `final_output.json` with normalized profile summaries.
+"""
 import json
 from datetime import datetime
 
-def extract_profile(profile):
+
+def extract_profile(profile: dict) -> dict | None:
     data = profile.get("data", {})
-
-    # Full name
     full_name = f"{data.get('firstName', '')} {data.get('lastName', '')}".strip()
-
-    # LinkedIn URL
     linkedin_url = data.get("linkedinUrl")
-
-    # Experience
     experience = data.get("experience", [])
     if not experience:
         return None
@@ -31,7 +31,7 @@ def extract_profile(profile):
             duration = f"{start_year} - {end_year}"
         else:
             duration = f"{start_year} - Current"
-    except:
+    except Exception:
         duration = "Unknown"
 
     return {
@@ -43,20 +43,17 @@ def extract_profile(profile):
     }
 
 
-# 🔹 Load your JSON file
 with open("reverse_connect.json", "r") as f:
     profiles = json.load(f)
 
 results = []
 
-# 🔹 Process all profiles
 for profile in profiles:
     extracted = extract_profile(profile)
     if extracted:
         results.append(extracted)
 
-# 🔹 Save output
 with open("final_output.json", "w") as f:
     json.dump(results, f, indent=2)
 
-print(f"✅ Converted {len(results)} profiles successfully!")
+print(f"Converted {len(results)} profiles successfully!")

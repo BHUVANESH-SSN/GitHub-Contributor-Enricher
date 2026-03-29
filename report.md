@@ -1,50 +1,78 @@
 # GitHub Contributor Enrichment Report
 
-## Repository Analysis
+## Scope
 
-> **Note on limits:** For each repository, the top 20 contributors were selected based on total commits. This number was chosen because it cleanly captures the core engineers responsible for over 90% of the repository's activity while keeping API rate limits and scraping costs manageable.
+This report summarizes the take-home analysis for:
+- `openai/codex`
+- `google-gemini/gemini-cli`
 
-### 5 out of Top 40 contributors were BOTS and GHOTS
+Metric used for contribution share:
+- commit count from the GitHub contributors API
 
-- **dependabot[bot] (from OpenAI Codex)**
-- **gemini-cli-robot (from Google Gemini)**
+Top contributor selection:
+- top 20 contributors per repository were selected for enrichment
+- this cutoff was chosen to capture the main contributors while keeping API usage and scraping cost manageable
 
-- **jif-oai (from OpenAI Codex)**
-- **iceweasel-oai (from OpenAI Codex)**
-- **viyatb-oai (from OpenAI Codex)**
+Dataset note:
+- the exported dataset excludes bot rows and rows with no useful enrichment signal, so the contributor counts below reflect the final checked-in dataset
+
+## Contributor Breakdown
 
 ### openai/codex
-- **Total top contributors analyzed:** 16
-- **Internal contributors:** 12 (75.0%)
-- **External contributors:** 4 (25.0%)
-- **Internal contribution share:** 2463 commits (86.1%)
-- **External contribution share:** 396 commits (13.9%)
+
+- Total contributors analyzed: 16
+- Internal contributors: 12
+- External contributors: 4
+- Internal contributor share: 75.0%
+- External contributor share: 25.0%
+- Internal contribution share: 2463 commits (86.1%)
+- External contribution share: 396 commits (13.9%)
 
 ### google-gemini/gemini-cli
-- **Total top contributors analyzed:** 19
-- **Internal contributors:** 16 (84.2%)
-- **External contributors:** 3 (15.8%)
-- **Internal contribution share:** 2769 commits (89.2%)
-- **External contribution share:** 334 commits (10.8%)
 
-## Top 10 Contributors Overall
+- Total contributors analyzed: 19
+- Internal contributors: 16
+- External contributors: 3
+- Internal contributor share: 84.2%
+- External contributor share: 15.8%
+- Internal contribution share: 2769 commits (89.2%)
+- External contribution share: 334 commits (10.8%)
 
-| GitHub Login | Repo | Contributions (Commits) | Classification | Employer | Tenure (Years) |
-|---|---|---|---|---|---|
-| bolinfest | openai/codex | 702 | internal | OpenAI | 2.1 |
-| aibrahim-oai | openai/codex | 457 | internal | OpenAI | 0.7 |
-| scidomino | google-gemini/gemini-cli | 363 | internal | Google | 14.0 |
-| pakrym-oai | openai/codex | 356 | internal | OpenAI | 1.0 |
-| NTaylorMullen | google-gemini/gemini-cli | 330 | internal | Google | 0.3 |
-| abhipatel12 | google-gemini/gemini-cli | 255 | internal | Google | 2.2 |
-| jacob314 | google-gemini/gemini-cli | 253 | internal | Google | 0.8 |
-| nornagon-openai | openai/codex | 199 | external | Jeremy Rose LLC | 0.7 |
-| SandyTao520 | google-gemini/gemini-cli | 199 | internal | Google | 3.8 |
-| etraut-openai | openai/codex | 184 | internal | OpenAI | 0.7 |
+## Top Contributors
+
+The table below highlights the top 5 enriched contributors per repository from the current exported dataset.
+
+### openai/codex
+
+| GitHub Login | Contribution Metric | Internal or External | Employer Inferred | Employer Confidence | LinkedIn URL | Tenure at Current Employer (Years) | Tenure Confidence |
+|---|---:|---|---|---|---|---:|---|
+| bolinfest | 702 | internal | OpenAI | high | https://www.linkedin.com/in/michael-bolin-7632712 | 2.1 | high |
+| aibrahim-oai | 457 | internal | OpenAI | high | https://www.linkedin.com/in/ahmedibrhm | 0.7 | high |
+| pakrym-oai | 356 | internal | OpenAI | high | https://www.linkedin.com/in/pakrym | 1.0 | high |
+| nornagon-openai | 199 | external | Jeremy Rose LLC | high | https://www.linkedin.com/in/jeremyerose | 0.7 | high |
+| etraut-openai | 184 | internal | OpenAI | high | https://www.linkedin.com/in/eric-traut-79a815137 | 0.7 | high |
+
+### google-gemini/gemini-cli
+
+| GitHub Login | Contribution Metric | Internal or External | Employer Inferred | Employer Confidence | LinkedIn URL | Tenure at Current Employer (Years) | Tenure Confidence |
+|---|---:|---|---|---|---|---:|---|
+| scidomino | 363 | internal | Google | high | https://www.linkedin.com/in/tommasosciortino | 14.0 | high |
+| NTaylorMullen | 330 | internal | Google | high | https://www.linkedin.com/in/ntaylormullen | 0.3 | high |
+| abhipatel12 | 255 | internal | Google | high | https://www.linkedin.com/in/abhiyadav | 2.2 | high |
+| jacob314 | 253 | internal | Google | high | https://www.linkedin.com/in/jacob-richman-5634565 | 0.8 | high |
+| SandyTao520 | 199 | internal | Google | high | https://www.linkedin.com/in/sandytao520 | 3.8 | high |
 
 ## Methodology
 
-1. **Data Ingestion:** Fetched contributors and PR numbers directly from the GitHub API based on defined repositories.
-2. **Classification:** Contributors were algorithmically grouped into `internal` vs `external` relying on public GitHub indicators (email domains, bios, and repository ownership logic).
-3. **Identity Resolution:** Queried Apify's Google Search actor dynamically to identify exact LinkedIn URLs corresponding to those developer usernames and known employers.
-4. **Profile Scraping:** Fetched complete LinkedIn employment history via the Scrapin.io API to bucket them exactly as requested and compute mathematical tenure periods up to the present date.
+1. Contributor data was fetched from the GitHub API.
+2. Contributors were classified as internal or external using public GitHub metadata such as email domain, company, username patterns, and organization membership.
+3. The top 20 contributors per repository were selected using commit count.
+4. LinkedIn URLs were discovered using Apify's Google Search actor.
+5. LinkedIn profile data was enriched using Scrapin.io to estimate current employer and tenure.
+
+## Notes and Assumptions
+
+- The process is automated and does not rely on manual profile lookups.
+- Confidence fields are preserved in the dataset for downstream review.
+- When a LinkedIn URL or reliable employment start date is unavailable, the pipeline falls back to empty fields, `Unknown`, or lower confidence values.
+- The current implementation attempts to map target employers such as OpenAI, Google, Anthropic, and xAI, but may also preserve a scraped non-target employer name when one is detected.

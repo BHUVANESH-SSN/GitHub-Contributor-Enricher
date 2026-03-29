@@ -4,3 +4,4 @@ PyGithub
 tqdm
 apify-client
 pandas
+requests

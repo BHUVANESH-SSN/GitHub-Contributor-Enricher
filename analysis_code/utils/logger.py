@@ -1,10 +1,11 @@
 """
-Purpose: Provides stylized and colored console logging.
-Input: String log messages and data.
-Output: Formatted terminal output.
+Purpose: Provide a small rich-based logger for consistent console output.
+Input: Message strings passed into the logger methods.
+Output: Styled terminal logs shown during pipeline execution.
 """
 from rich.console import Console
 from rich.text import Text
+
 
 class Logger:
     def __init__(self):
@@ -26,5 +27,6 @@ class Logger:
         self.console.print()
         self.console.print(Text(f"=== {title} ===", style="bold cyan"))
         self.console.print()
+
 
 logger = Logger()

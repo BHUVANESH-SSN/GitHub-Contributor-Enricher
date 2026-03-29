@@ -1,46 +1,169 @@
-# GitHub Contributor Enrichment Pipeline
+# GitHub Contributor Enrichment Take-Home
 
-This project analyzes open-source repositories to estimate how much of their development is driven by internal employees versus external community members. It enriches the top contributors by automatically discovering their LinkedIn profiles, inferring their current employers (such as OpenAI, Google, Anthropic, or xAI), and calculating their employment tenure.
+This repository contains an automated pipeline for the take-home task: estimate internal vs external contribution share for two repositories and enrich top contributors with LinkedIn URL, employer, and tenure signals.
 
-## Objectives Handled
-* **Internal vs External Analysis:** Categorizes contributors automatically based on corporate emails, GitHub organizations, and domain names.
-* **Identity Enrichment:** Discovers LinkedIn URLs of contributors using intelligent search scraping.
-* **Employment Data:** Scrapes profile histories to isolate employers and compute tenure math up to the current date.
+Repositories analyzed:
+- `openai/codex`
+- `google-gemini/gemini-cli`
 
-## Approach & Methodology
-This pipeline chains together 3 distinct tools to solve the problem without manual lookups:
-1. **GitHub API (Data Collection):** Extracts contributors, handles pagination, and fetches merged pull request/commit counts to identify the highest-impact developers. It classifies users internally or externally based on GitHub metadata (company tags, emails).
-2. **Apify Google Search Actor (Identity Resolution):** Automatically queries Google using the format `"{Name} {Company} site:linkedin.com/in"` to reliably discover accurate LinkedIn URLs for the top contributors.
-3. **Scrapin.io API (Profile Extraction):** Pulls structured JSON representations of the target LinkedIn URLs. To respect rate limits, requests are gracefully paced (`sleep`). The tool then applies custom matching to bucket employers strictly according to prompt criteria (`OpenAI`, `Google`, `Anthropic`, `xAI`), dynamically calculating exact years of tenure based on start dates.
+## Task Coverage
+
+The project addresses both parts of the assignment:
+
+1. Internal vs external contribution analysis
+   - estimates internal vs external contributor counts
+   - estimates internal vs external contribution share
+   - uses commit count as the primary contribution metric
+
+2. Contributor enrichment
+   - finds LinkedIn profile URLs for top contributors
+   - infers current employer
+   - estimates tenure at current employer
+   - preserves confidence fields for classification and tenure quality
+
+The checked-in outputs are:
+- `dataset.csv`
+- `report.md`
+
+## Approach
+
+The pipeline is fully automated and uses multiple APIs/tools:
+
+1. GitHub API
+   - fetches contributors and merged pull request counts
+   - collects GitHub profile metadata such as login, name, email, and company
+   - classifies contributors as likely internal or external
+
+2. Apify Google Search actor
+   - searches for LinkedIn profile URLs using queries like `"{name} {company} site:linkedin.com/in"`
+   - resolves contributor identity without manual lookup
+
+3. Scrapin.io profile enrichment API
+   - fetches structured LinkedIn profile data
+   - extracts current employer and start date
+   - computes tenure in years
+
+Current implementation note:
+- The assignment mentions Bright Data as a possible web scraping tool. The checked-in implementation uses GitHub API + Apify + Scrapin.io instead.
+- No Anthropic API key is required by the current codebase.
+
+## Internal vs External Logic
+
+Internal contributors are contributors who likely work at the company behind the repository:
+- OpenAI for `openai/codex`
+- Google for `google-gemini/gemini-cli`
+
+Classification signals include:
+- public email domain
+- GitHub username patterns
+- GitHub `company` field
+- GitHub organization membership
+- known internal account hints
+
+## Top Contributor Selection
+
+The pipeline selects the top `20` contributors per repository by commit count before enrichment.
+
+Why 20:
+- it captures the main contributors driving repository activity
+- it keeps LinkedIn enrichment costs manageable
+- it provides a reasonable tradeoff between signal quality and API usage
+
+## Project Structure
+
+- `analysis_code/`: main pipeline source code
+- `dataset.csv`: final enriched dataset
+- `report.md`: submission report
+- `cache/`: cached intermediate API results and helper scripts
+- `backups/`: backup helper scripts
+
+## Output Dataset
+
+The final dataset includes at least these fields:
+
+- `repo`
+- `github_login`
+- `github_id`
+- `name`
+- `contribution_metric`
+- `internal_or_external`
+- `employer_inferred`
+- `employer_confidence`
+- `linkedin_url`
+- `tenure_current_employer_years`
+- `tenure_confidence`
+
+The checked-in dataset also includes:
+- `classification_confidence`
 
 ## Required API Keys
-You will need three free-tier keys to run this pipeline end-to-end. Copy the `.env.example` file to `.env` and fill them in:
 
-1. **`GITHUB_TOKEN`**: A GitHub Personal Access Token (classic or fine-grained) to fetch repo data.
-2. **`APIFY_API_TOKEN`**: Register at [Apify](https://apify.com) to use the `apify/google-search-scraper` for resolving URLs.
-3. **`SCRAPIN_API_KEY`**: Register at [Scrapin.io](https://scrapin.io) to fetch structured LinkedIn profile JSONs.
+Copy `.env.example` to `.env` and provide the following values:
+
+```bash
+cp .env.example .env
+```
+
+Required by the current implementation:
+- `GITHUB_TOKEN`
+- `APIFY_API_TOKEN`
+- `SCRAPIN_API_KEY`
+
+Optional/configurable:
+- `APIFY_ACTOR`
+- `SCRAPIN_ENDPOINT`
+
+Not required by the current code:
+- `ANTHROPIC_API_KEY`
+- Bright Data credentials
 
 ## How to Run
 
-1. **Install Dependencies:**
-   Ensure you have Python 3.10+ installed, then run:
-   ```bash
-   pip install -r requirements.txt
-   ```
+1. Install dependencies
 
-2. **Configure Environment:**
-   ```bash
-   cp .env.example .env
-   # Open .env and add your API keys
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-3. **Run the Pipeline:**
-   Execute the orchestrator script:
-   ```bash
-   python3 analysis_code/main.py
-   ```
+2. Configure environment variables
 
-4. **View Outputs:**
-   The process will generate two files in the root directory:
-   * `dataset.csv`: The structured matrix of contributors, metrics, URLs, companies, and tenure.
-   * `report.md`: A highly readable markdown breakdown summarizing internal vs external shares and the top 10 individual contributors.
+```bash
+cp .env.example .env
+```
+
+3. Run the pipeline
+
+```bash
+python3 analysis_code/main.py
+```
+
+4. Review generated artifacts
+
+- `dataset.csv`
+- `report.md`
+
+## Methodology Summary
+
+1. Fetch repository contributors from GitHub.
+2. Compute a contribution metric using commit counts and capture merged PR counts for reference.
+3. Classify contributors as internal or external using public GitHub signals.
+4. Select the top 20 contributors per repository.
+5. Resolve LinkedIn profile URLs using Apify search.
+6. Enrich profile data using Scrapin.io.
+7. Build the final dataset and markdown report.
+
+## Handling Missing or Uncertain Data
+
+The pipeline is designed to avoid manual lookups and handle incomplete data gracefully:
+
+- missing LinkedIn URLs are left empty
+- missing employer data falls back to `Unknown` or a low-confidence internal estimate
+- tenure uses `0` or `unknown` confidence when a reliable start date is unavailable
+
+## Bonus Extensibility
+
+The current code is partially structured for reuse across repositories, but it is still configured around the two repositories in this assignment. To make it fully generic for arbitrary repositories, the next step would be to parameterize:
+
+- repository inputs
+- company-specific internal classification rules
+- employer bucket mappings

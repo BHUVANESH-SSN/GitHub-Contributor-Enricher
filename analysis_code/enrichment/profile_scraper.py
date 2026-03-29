@@ -1,18 +1,20 @@
 """
-Purpose: Scrapes LinkedIn profiles to extract current employer and calculate tenure.
-Input: List of contributors with a 'linkedin_url'.
-Output: List of contributors enriched with employer and tenure estimates.
+Purpose: Enrich contributor records with employer and tenure data from LinkedIn profile APIs.
+Input: Contributor records that may include a `linkedin_url`.
+Output: Returns contributor records with employer, title, and tenure fields populated.
 """
 import json
-import requests
 import os
 import time
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
-from analysis_code.utils.logger import logger
-from analysis_code.utils.config import SCRAPIN_ENDPOINT
+
+import requests
 from tqdm import tqdm
+
+from analysis_code.utils.config import SCRAPIN_ENDPOINT
+from analysis_code.utils.logger import logger
 
 CACHE_DIR = Path("cache")
 CACHE_DIR.mkdir(exist_ok=True, parents=True)
@@ -22,13 +24,18 @@ def bucket_employer(company: str) -> str:
     if not company:
         return "Unknown"
     c = company.lower()
-    
-    if "openai" in c: return "OpenAI"
-    if "google" in c or "alphabet" in c or "deepmind" in c: return "Google"
-    if "anthropic" in c: return "Anthropic"
-    if "xai" in c or "x.ai" in c: return "xAI"
-    
+
+    if "openai" in c:
+        return "OpenAI"
+    if "google" in c or "alphabet" in c or "deepmind" in c:
+        return "Google"
+    if "anthropic" in c:
+        return "Anthropic"
+    if "xai" in c or "x.ai" in c:
+        return "xAI"
+
     return company
+
 
 def calculate_tenure(start_date_str: str) -> Optional[float]:
     if not start_date_str:
@@ -56,7 +63,7 @@ def scrape_profile(linkedin_url: str) -> dict:
         response = requests.get(
             SCRAPIN_ENDPOINT,
             params={
-                "apikey":      api_key,
+                "apikey": api_key,
                 "linkedInUrl": linkedin_url,
             },
             timeout=30,
@@ -83,9 +90,9 @@ def scrape_profile(linkedin_url: str) -> dict:
 
 def extract_current_position(profile: dict) -> dict:
     result = {
-        "current_company":   "",
-        "current_title":     "",
-        "tenure_years":      None,
+        "current_company": "",
+        "current_title": "",
+        "tenure_years": None,
         "tenure_confidence": "unknown",
     }
 
@@ -111,7 +118,7 @@ def extract_current_position(profile: dict) -> dict:
 
     current = next(
         (p for p in positions if not p.get("endEndDate") and not p.get("end_date")),
-        positions[0] if positions else None
+        positions[0] if positions else None,
     )
 
     if current:
@@ -128,14 +135,14 @@ def extract_current_position(profile: dict) -> dict:
             or current.get("start_date")
         )
         if isinstance(start, dict):
-            year  = start.get("year")
+            year = start.get("year")
             month = start.get("month", 1)
             start = f"{year}-{str(month).zfill(2)}" if year else None
 
         if start:
             tenure = calculate_tenure(str(start))
             if tenure is not None:
-                result["tenure_years"]      = tenure
+                result["tenure_years"] = tenure
                 result["tenure_confidence"] = "high"
 
     return result
@@ -155,24 +162,23 @@ def enrich_profiles(contributors: list) -> list:
         url = contributor.get("linkedin_url", "")
 
         if not url.startswith("http"):
-            # If no URL was found, we can still fall back to GitHub classification
             fallback_employer = "Unknown"
             if contributor.get("internal_or_external") == "internal":
                 repo = contributor.get("repo", "")
                 fallback_employer = "OpenAI" if "openai" in repo else "Google"
-                
+
             contributor.update({
-                "current_company":               "",
-                "current_title":                 "",
-                "employer_inferred":             fallback_employer,
-                "employer_confidence":           "low",
+                "current_company": "",
+                "current_title": "",
+                "employer_inferred": fallback_employer,
+                "employer_confidence": "low",
                 "tenure_current_employer_years": 0,
-                "tenure_confidence":             "unknown",
+                "tenure_confidence": "unknown",
             })
             enriched.append(contributor)
             continue
 
-        profile  = scrape_profile(url)
+        profile = scrape_profile(url)
         position = extract_current_position(profile)
         employer = bucket_employer(position["current_company"])
 
@@ -184,12 +190,12 @@ def enrich_profiles(contributors: list) -> list:
                 employer = "OpenAI" if "openai" in repo else "Google"
 
         contributor.update({
-            "current_company":               position["current_company"],
-            "current_title":                 position["current_title"],
-            "employer_inferred":             employer,
-            "employer_confidence":           "high" if position["tenure_years"] else contributor.get("classification_confidence", "low"),
+            "current_company": position["current_company"],
+            "current_title": position["current_title"],
+            "employer_inferred": employer,
+            "employer_confidence": "high" if position["tenure_years"] else contributor.get("classification_confidence", "low"),
             "tenure_current_employer_years": position["tenure_years"] or 0,
-            "tenure_confidence":             position["tenure_confidence"],
+            "tenure_confidence": position["tenure_confidence"],
         })
         enriched.append(contributor)
 

@@ -1,14 +1,16 @@
 """
-Purpose: Classifies contributors as internal or external based on metadata signals.
-Input: List of GitHub contributor dictionaries.
-Output: Contributors mapped with 'internal_or_external' and confidence levels.
+Purpose: Classify contributors as internal or external using GitHub profile signals.
+Input: Contributor dictionaries plus the repository slug being evaluated.
+Output: Returns contributor records enriched with classification labels and confidence.
 """
 import json
 from pathlib import Path
 from typing import Dict, List
-from analysis_code.utils.logger import logger
+
 from github import Github, GithubException
+
 from analysis_code.utils.config import GITHUB_TOKEN
+from analysis_code.utils.logger import logger
 
 CACHE_DIR = Path("cache")
 CACHE_DIR.mkdir(exist_ok=True, parents=True)
@@ -117,6 +119,7 @@ def classify_all(contributors: List[Dict], repo_name: str) -> List[Dict]:
     counts: Dict[str, int] = {"internal": 0, "external": 0, "unknown": 0}
 
     from tqdm import tqdm
+
     for contributor in tqdm(contributors, desc=f"Classifying ({repo_name})"):
         classified = classify_contributor(contributor, repo_name)
         status = classified.get("internal_or_external", "unknown")

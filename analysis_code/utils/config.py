@@ -1,9 +1,10 @@
 """
-Purpose: Loads and validates environment variables and project constants.
-Input: .env file containing API tokens.
-Output: Exported configuration variables for the application.
+Purpose: Load environment variables and shared pipeline constants.
+Input: Values from `.env` and default repository settings defined in this module.
+Output: Exposes configuration constants and raises validation errors for missing keys.
 """
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -16,6 +17,7 @@ SCRAPIN_ENDPOINT = os.getenv("SCRAPIN_ENDPOINT", "https://api.scrapin.io/enrichm
 
 REPOS = ["openai/codex", "google-gemini/gemini-cli"]
 TOP_N_CONTRIBUTORS = 20
+
 
 def validate_config() -> None:
     if not GITHUB_TOKEN:

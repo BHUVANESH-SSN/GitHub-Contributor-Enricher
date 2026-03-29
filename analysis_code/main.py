@@ -1,7 +1,7 @@
 """
-Purpose: Orchestrates the entire pipeline from fetching data to report generation.
-Input: None (reads configurations from environment).
-Output: Generates dataset.csv and report.md in the root directory.
+Purpose: Run the contributor enrichment pipeline from repository fetch to final outputs.
+Input: Environment configuration loaded from `.env` and repository constants from `config.py`.
+Output: Writes `dataset.csv` and `report.md` in the project root.
 """
 import sys
 from pathlib import Path
@@ -17,6 +17,7 @@ from analysis_code.enrichment.linkedin_finder import find_linkedin_urls_bulk
 from analysis_code.enrichment.profile_scraper import enrich_profiles
 from analysis_code.output.dataset_builder import build_dataset
 from analysis_code.output.report_builder import build_report
+
 
 def main() -> None:
     try:
@@ -76,6 +77,7 @@ def main() -> None:
         logger.fail(f"Pipeline failed with error: {e}")
         import traceback
         traceback.print_exc()
+
 
 if __name__ == "__main__":
     main()

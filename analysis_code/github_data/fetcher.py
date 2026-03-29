@@ -1,11 +1,11 @@
 """
-Purpose: Fetches contributors and Pull Requests from the GitHub API.
-Input: GitHub repository name (e.g., 'openai/codex').
-Output: List of raw GitHub contributor dictionaries and PR counts.
+Purpose: Fetch contributor and merged pull request data from the GitHub API with caching.
+Input: A repository slug such as `openai/codex`.
+Output: Returns contributor records and per-user merged pull request counts.
 """
 import json
-import os
 from pathlib import Path
+
 from github import Github, GithubException
 from tqdm import tqdm
 
@@ -16,6 +16,7 @@ CACHE_DIR = Path("cache")
 CACHE_DIR.mkdir(exist_ok=True, parents=True)
 
 g = Github(GITHUB_TOKEN)
+
 
 def get_contributors(repo_name: str) -> list[dict]:
     repo_slug = repo_name.replace("/", "_")
@@ -52,6 +53,7 @@ def get_contributors(repo_name: str) -> list[dict]:
     except GithubException as e:
         logger.warning(f"GitHub API error fetching contributors for {repo_name}: {e}")
         return []
+
 
 def get_merged_prs(repo_name: str) -> dict[str, int]:
     repo_slug = repo_name.replace("/", "_")
